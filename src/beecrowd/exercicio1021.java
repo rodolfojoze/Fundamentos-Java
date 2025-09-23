@@ -3,7 +3,7 @@ package beecrowd;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Exercicio1021 {
+public class exercicio1021 {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner input = new Scanner(System.in);

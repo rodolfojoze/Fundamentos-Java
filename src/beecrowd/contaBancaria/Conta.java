@@ -1,6 +1,6 @@
 package beecrowd.contaBancaria;
 
-public class Conta {
+public class Conta implements ContaBancaria {
 
     private String titular;
     private int numeroConta;
@@ -12,6 +12,7 @@ public class Conta {
         this.saldo = 0;
     }
 
+    @Override
     public double getSaldo() {
         return saldo;
     }
@@ -35,6 +36,7 @@ public class Conta {
         this.numeroConta = numeroConta;
     }
 
+    @Override
     public boolean depositar(double valor){
         if (valor > 0 ){
             saldo += valor;
@@ -43,6 +45,7 @@ public class Conta {
             return false;
         }
     }
+    @Override
     public boolean sacar(double valor) {
         if (valor > 0 && saldo >= valor){
             saldo -= valor;
@@ -51,8 +54,8 @@ public class Conta {
             return false;
         }
     }
-
-    public boolean transferir (double valor, Conta destino){
+    @Override
+    public boolean transferir(double valor, ContaBancaria destino) {
         if (valor > 0 && saldo >= valor){
             saldo -= valor;
             destino.depositar(valor);
@@ -61,7 +64,6 @@ public class Conta {
             return false;
         }
     }
-
     public String toString(){
         return "A conta " + numeroConta + " de " + titular + " tem o saldo de: " + saldo;
     }
